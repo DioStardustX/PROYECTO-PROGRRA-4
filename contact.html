@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>League of News</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="EndGam Gaming Magazine Template">
+	<meta name="keywords" content="endGam,gGaming, magazine, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+	<link href="img/favicon.ico" rel="shortcut icon" />
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/font-awesome.min.css" />
+	<link rel="stylesheet" href="css/slicknav.min.css" />
+	<link rel="stylesheet" href="css/owl.carousel.min.css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" />
+	<link rel="stylesheet" href="css/animate.css" />
+
+	<!-- Main Stylesheets -->
+	<link rel="stylesheet" href="css/style.css" />
+
+	<!-- Implementacion de jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+	<script type="module" src="./map.js"></script>
+</head>
+
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+	<!-- Header section -->
+	<header class="header-section">
+		<div class="header-warp">
+			<div class="header-social d-flex justify-content-end">
+				<p>Siguenos</p>
+				<a href="#"><i class="fa fa-pinterest"></i></a>
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-dribbble"></i></a>
+				<a href="#"><i class="fa fa-behance"></i></a>
+			</div>
+			<div class="header-bar-warp d-flex">
+				<!-- site logo -->
+				<a href="index.html" class="site-logo">
+					<img src="./img/LEAGUEOFNEWS.png" alt="">
+				</a>
+				<nav class="top-nav-area w-100">
+					<!-- Menu -->
+					<ul class="main-menu primary-menu">
+						<li><a href="index.html">Inicio</a></li>
+						<li><a href="about.html">Acerca de</a></li>
+						<li><a href="contact.html">Contactenos</a></li>
+						<li><a href="blog.html">Informacion del Autor</a></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!-- Header section end -->
+
+
+	<!-- Page top section -->
+	<section class="page-top-section set-bg" data-setbg="img/page-top-bg/4.jpg">
+		<div class="page-info">
+			<h2>Contactenos</h2>
+			<div class="site-breadcrumb">
+				<a href="">Inicio</a> /
+				<span>Contactenos</span>
+			</div>
+		</div>
+	</section>
+	<!-- Page top end-->
+
+
+	<!-- Contact page -->
+	<section class="contact-page">
+		<div class="container">
+			<!-- Renderizar mapa de google -->
+			<div id="map" class="map"></div>
+			<button id="botonTrazarRuta" class="btn btn-primary mb-2">Trazar Ruta</button>
+			<div class="row">
+				<div class="col-lg-7 order-2 order-lg-1">
+					<form action="https://formsubmit.co/leagueofnews404@gmail.com" class="contact-form" method="POST">
+						<label for="nombre">Nombre:</label>
+						<input type="text" name="nombre" id="nombre" required>
+
+						<label for="email">Email:</label>
+						<input type="email" name="email" id="email" required>
+
+						<label for="fechaNacimiento">Fecha de Nacimiento:</label>
+						<input type="date" name="fechaNacimiento" id="fechaNacimiento" required>
+
+						<!-- Mostrar la edad automáticamente -->
+						<label for="edad">Edad:</label>
+						<input type="text" name="edad" id="edad" readonly>
+
+						<select id="provincia" name="provincia" onchange="cargarCantones()" required>
+							<option value="">Seleccione su provincia</option>
+						</select>
+						<select id="canton" name="canton" onchange="cargarDistritos()" required>
+							<option value="">Seleccione su cantón</option>
+						</select>
+						<select id="distrito" name="distrito" required>
+							<option value="">Seleccione su distrito</option>
+						</select>
+
+						<label for="rangoIngreso">Rango de Ingreso:</label>
+						<input type="number" name="rangoIngreso" id="rangoIngreso" min="0" step="0.01" required>
+
+						<div class="genero-container border-bottom">
+							<label>Género:</label>
+							<div class="d-flex align-items-center ">
+								<label for="generoMasculino">Masculino</label>
+								<input type="radio" name="genero" value="masculino" id="generoMasculino" required>
+
+								<label for="generoFemenino">Femenino</label>
+								<input type="radio" name="genero" value="femenino" id="generoFemenino" required>
+
+								<label for="generoOtro">Otro</label>
+								<input type="radio" name="genero" value="otro" id="generoOtro" required>
+							</div>
+						</div>
+
+						<div class="grado-academico-container border-bottom">
+							<label for="gradoAcademico">Grado Académico:</label>
+							<div class="d-flex align-items-center">
+								<label for="gradoSecundaria">Secundaria</label>
+								<input type="checkbox" name="gradoAcademico" value="secundaria" id="gradoSecundaria">
+
+								<label for="gradoPreparatoria">Preparatoria</label>
+								<input type="checkbox" name="gradoAcademico" value="preparatoria"
+									id="gradoPreparatoria">
+
+								<label for="gradoUniversidad">Universidad</label>
+								<input type="checkbox" name="gradoAcademico" value="universidad" id="gradoUniversidad">
+							</div>
+						</div>
+
+
+						<textarea name="mensaje" id="mensaje" placeholder="Mensaje"></textarea>
+
+						<button class="site-btn" type="submit">Enviar<img src="img/icons/double-arrow.png"
+								alt="#" /></button>
+					</form>
+				</div>
+				<div class="col-lg-5 order-1 order-lg-2 contact-text text-white">
+					<h3>LEAGUE OF NEWS</h3>
+					<p>En esta página encontrarás las últimas noticias de League of Legends</p>
+					<!-- Implementar una tabla personalizada que muestre el horario de contacto -->
+					<div class="contact-schedule">
+						<h4>Horario de Contacto</h4>
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>Día</th>
+									<th>Horario</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Lunes - Viernes</td>
+									<td>8 am - 5 pm</td>
+								</tr>
+								<tr>
+									<td>Sábado - Domingo</td>
+									<td>Días Libres</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- Fin de la tabla de horario de contacto -->
+					<div class="cont-info">
+						<div class="ci-icon"><img src="img/icons/location.png" alt=""></div>
+						<div class="ci-text">Alajuela, Costa Rica</div>
+					</div>
+					<div class="cont-info">
+						<div class="ci-icon"><img src="img/icons/phone.png" alt=""></div>
+						<div class="ci-text">+506 99022121</div>
+					</div>
+					<div class="cont-info">
+						<div class="ci-icon"><img src="img/icons/mail.png" alt=""></div>
+						<div class="ci-text">leagueofnews404@gmail.com</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Contact page end-->
+
+
+	<!-- Newsletter section -->
+	<section class="newsletter-section">
+		<div class="container">
+			<h2>Suscribete para recibir mas contenido</h2>
+			<form class="newsletter-form">
+				<input type="text" placeholder="INGRESA TU CORREO ELECTRONICO" required>
+				<button type="submit" class="site-btn">SUSCRIBIRSE <img src="img/icons/double-arrow.png"
+						alt="#" /></button>
+			</form>
+		</div>
+	</section>
+	<!-- Newsletter section end -->
+
+
+	<!-- Footer section -->
+	<footer class="footer-section">
+		<div class="container">
+			<div class="footer-left-pic">
+				<img src="img/irelia.png" alt="">
+			</div>
+			<div class="footer-right-pic">
+				<img src="img/yone.png" alt="">
+			</div>
+			<a href="#" class="footer-logo">
+				<img src="./img/LEAGUEOFNEWS.png" alt="">
+			</a>
+			<ul class="main-menu footer-menu">
+				<li><a href="index.html">Inicio</a></li>
+				<li><a href="about.html">Acerca de</a></li>
+				<li><a href="contact.html">Contactenos</a></li>
+				<li><a href="blog.html">Informacion del Autor</a></li>
+			</ul>
+			<div class="footer-social d-flex justify-content-center">
+				<a href="#"><i class="fa fa-pinterest"></i></a>
+				<a href="#"><i class="fa fa-facebook"></i></a>
+				<a href="#"><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-dribbble"></i></a>
+				<a href="#"><i class="fa fa-behance"></i></a>
+			</div>
+			<div class="copyright"><a href="">LEAGUE OF NEWS</a> 2023 @ All rights reserved</div>
+		</div>
+	</footer>
+	
+	<!-- Footer section end -->
+	
+	<!-- Implementacion de Google Maps -->
+	<script>(g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+			({ key: "AIzaSyAEOaA0CZgJfjsSGU5Rjcd1CJtC0YiSp_I", v: "weekly" });</script>
+	
+	<script>
+		let map;
+		let userLocationMarker;
+
+		async function initMap() {
+			//@ts-ignore
+			const { Map } = await google.maps.importLibrary("maps");
+
+			map = new Map(document.getElementById("map"), {
+				zoom: 20,
+			});
+
+			// Obtener la ubicación actual del usuario
+			if (navigator.geolocation) {
+				navigator.geolocation.getCurrentPosition(
+					(position) => {
+						const userLocation = {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude,
+						};
+
+						// Centrar el mapa en la ubicación del usuario
+						map.setCenter(userLocation);
+
+						// Agregamps un marcador en la ubicación del usuario
+						userLocationMarker = new google.maps.Marker({
+							position: userLocation,
+							map: map,
+							title: "Tu ubicación actual",
+						});
+					},
+					(error) => {
+						console.error("Error al obtener la ubicación: ", error);
+					}
+				);
+			} else {
+				console.error("La geolocalización no es compatible con este navegador.");
+			}
+		}
+
+		function traceRoute() {
+			// Coordenadas del destino
+			const destination = { lat: 10.007213224949245, lng: -84.21771091569164 };
+
+			// Verificar si hay una ubicación de usuario y trazar la ruta
+			if (userLocationMarker) {
+				const directionsService = new google.maps.DirectionsService();
+				const directionsRenderer = new google.maps.DirectionsRenderer();
+
+				directionsRenderer.setMap(map);
+
+				const request = {
+					origin: userLocationMarker.getPosition(),
+					destination: destination,
+					travelMode: google.maps.TravelMode.DRIVING,
+				};
+
+				directionsService.route(request, (result, status) => {
+					if (status == google.maps.DirectionsStatus.OK) {
+						directionsRenderer.setDirections(result);
+					} else {
+						console.error("Error al trazar la ruta: ", status);
+					}
+				});
+			} else {
+				alert("No se puede trazar la ruta porque no se ha podido obtener la ubicación del usuario.");
+				console.error("Ubicación de usuario no disponible.");
+			}
+		}
+
+		$(document).ready(function () {
+			initMap();
+
+			function actualizarEdad() {
+				var fechaNacimiento = $("#fechaNacimiento").val();
+				var edad = calculateAge(fechaNacimiento);
+				$("#edad").val(edad);
+			}
+
+			// Actualizar la edad automáticamente al cambiar la fecha de nacimiento
+			$("#fechaNacimiento").change(function () {
+				actualizarEdad();
+			});
+
+			$(".contact-form").submit(function (e) {
+				e.preventDefault();
+
+				// Recopilar información
+				var nombre = $("#nombre").val();
+				var email = $("#email").val();
+				var fechaNacimiento = $("#fechaNacimiento").val();
+				var rangoIngreso = $("#rangoIngreso").val();
+				var genero = $("input[name='genero']:checked").val();
+				var gradoAcademico = $("input[name='gradoAcademico']:checked").map(function () {
+					return $(this).val();
+				}).get();
+				var mensaje = $("#mensaje").val();
+				var edad = calculateAge(fechaNacimiento);
+
+				$("#edad").val(edad);
+
+				// Enviar la información al servidor
+				$(this).unbind("submit").submit();
+			});
+
+			function calculateAge(birthdate) {
+				var today = new Date();
+				var birthDate = new Date(birthdate);
+				var age = today.getFullYear() - birthDate.getFullYear();
+				var month = today.getMonth() - birthDate.getMonth();
+				if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+					age--;
+				}
+				return age;
+			}
+
+			$("#botonTrazarRuta").click(function () {
+				traceRoute();
+			});
+		});
+	</script>
+	<script src="js/script.js"></script>
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.sticky-sidebar.min.js"></script>
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/main.js"></script>
+
+
+
+</body>
+
+</html>
